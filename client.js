@@ -1,41 +1,46 @@
 console.log('ty js');
 
-let P_Counter = 0;
+let pCounter = 0;
 
 $(document).ready(readyNow);
 
 function readyNow(){
   console.log('in readyNow function; DOM is ready');
-  onClickListerners();
+  onClickListeners();
 }
 
-function onClickListerners(){
-  console.log('in onClickListerners function');
+function onClickListeners(){
+  console.log('in onClickListeners function');
   $('#generateButton').on('click', appendDivFunc);
-
+  $('.containerDiv').on('click', '.swapButton', swapFunc);
+  $('.containerDiv').on('click', '.deleteButton', deleteFunc);
 }
+
 //Using jQuery, append a <div> element when you click the button.
 function appendDivFunc(){
   console.log('in appendDivFunc function');
-  let appendDiv = $('.bodyDiv').append("<div class = dynamicDiv></div>");
-  P_Counter += 1;
-  $('dynamicDiv').empty();
-  appendP_Counter();
+  pCounter += 1;
+  console.log('pCounter is at: ', pCounter);
+
+  // Inside the <div> element you created in the previous step, create a <p> element that shows how many times you have clicked the button from the first step.
+  // Inside the <div> element you created in step two, append two <button> //elements. The text of the two buttons should read "Swap" and "Delete".
+  
+ let appendDiv = "<div class = 'dynamicDiv'>dynamicDiv<p class = 'counterOnDom'> " + pCounter + "</p><button class = 'swapButton'>Swap</button><button class = 'deleteButton'>Delete</button></div>";
+
+  $('.containerDiv').append(appendDiv);
 
 }
 
-// Inside the <div> element you created in the previous step, create a <p> element that shows how many times you have clicked the button from the first step.
-
-function appendP_Counter(){
-  console.log('in appendP_Counter function');
-  $('.dynamicDiv').append("<p class = P_Counter>You clicked the Generate button this many times: </div>");
-
-
-
+function swapFunc() {
+  $(this).parent().toggleClass('yellow');
 }
 
-function generateData(){
-console.log('in generateData function');
-let inputValue = $('#generateInput').val();
-console.log(inputValue);
+//Clicking "Delete" < button > should remove its parent < div > container (and all of its contents).
+
+function deleteFunc() {
+  $(this).parent().remove();
 }
+
+
+ 
+

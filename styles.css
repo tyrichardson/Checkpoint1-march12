@@ -1,0 +1,12 @@
+
+/*In a CSS file, any <div> created using the "Generate" button should have a Red background-color.*/
+
+/*:nth-of-type(1n+0)*/
+.dynamicDiv {
+    background: red;
+    margin: 5px;
+}
+
+.yellow {
+    background: yellow;
+}
